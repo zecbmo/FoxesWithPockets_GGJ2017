@@ -27,6 +27,10 @@ public class SoundBlockFactory : MonoBehaviour {
     //The source audio clip to break up
     private AudioClip SourceAudioFile;
 
+    [SerializeField]
+    //This will be The object that will be created
+    private GameObject SoundBlockPrefab;
+
     //Length of the audio file
     private float AudioLength;
 
@@ -48,10 +52,27 @@ public class SoundBlockFactory : MonoBehaviour {
             AudioLength = SourceAudioFile.length;
             SampleSize = AudioLength / (float)DivideAmount;
 
-            for (int i = 0; i < DivideAmount; i++)
-            {
+            float AudioStartPoint = 0;
+            float AudioEndPoint = SampleSize;
 
-                
+            for (int i = 1; i <= DivideAmount; i++)
+            {
+                if (i == DivideAmount)
+                {
+                    AudioEndPoint = AudioLength;
+                }
+
+                //Create the AudioBlock Here and initialise it based on these Settings
+                GameObject NewSoundBlock = Instantiate(SoundBlockPrefab);
+                SoundBlock NewSoundScript = NewSoundBlock.GetComponent<SoundBlock>();
+                NewSoundScript.SetUpAudio(SourceAudioFile, AudioStartPoint, AudioEndPoint);
+
+                //Wait here?
+
+                //Update Sample points for next object
+                AudioStartPoint += SampleSize;
+                AudioEndPoint += SampleSize;
+                         
 
             }
         }
