@@ -65,7 +65,7 @@ public class SoundBlockFactory : MonoBehaviour {
                 //Create the AudioBlock Here and initialise it based on these Settings
                 GameObject NewSoundBlock = Instantiate(SoundBlockPrefab);
                 SoundBlock NewSoundScript = NewSoundBlock.GetComponent<SoundBlock>();
-                NewSoundScript.SetUpAudio(SourceAudioFile, AudioStartPoint, AudioEndPoint);
+                NewSoundScript.SetUpAudio(SourceAudioFile, AudioStartPoint, AudioEndPoint, i-1); //-1 to make it 0 - fixes problems later on for ID
 
                 //Wait here?
 

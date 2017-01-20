@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class SoundBlock : MonoBehaviour {
 
-
+    /**
+    *   The Sound Block
+    *
+    *   This Script is added to the interactable auido object (prefab)
+    *   It works with the Sound Block Factory to set up the Audio listener and the time Settings of the clip
+    */
     private float AudioStartPoint;
     private float AudioEndPoint;
     private AudioSource Audio;
-
-
+    private int ID;
 	
 	
 	// Update is called once per frame
@@ -21,11 +25,11 @@ public class SoundBlock : MonoBehaviour {
         }	
 	}
 
-    public void SetUpAudio(AudioClip Clip, float StartPoint, float EndPoint)
+    public void SetUpAudio(AudioClip Clip, float StartPoint, float EndPoint, int SoundBlockID)
     {
         AudioStartPoint = StartPoint;
         AudioEndPoint = EndPoint;
-
+        ID = SoundBlockID;
         Audio = GetComponent<AudioSource>();
 
         Audio.clip = Clip;
