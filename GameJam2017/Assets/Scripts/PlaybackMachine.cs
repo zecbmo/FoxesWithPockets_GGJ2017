@@ -35,24 +35,30 @@ public class PlaybackMachine : MonoBehaviour {
     //Confetti Game Object
     private GameObject Confetti;
 
+  
 
     void Update()
     {
         //Check the block spaces 
-        BlocksFilled = true;
-        BlocksCorrect = true;
 
-        foreach (GameObject Block in BlockSpaces)
+        if (BlockSpaces.Count != 0)
         {
-            BlockSpace BlockSpaceScript = Block.GetComponent<BlockSpace>();
+            BlocksFilled = true;
+            BlocksCorrect = true;
 
-            if (!BlockSpaceScript.IsObjectSet())
+            foreach (GameObject Block in BlockSpaces)
             {
-                BlocksFilled = false;
-            }
-            else if(!BlockSpaceScript.IsObjectSetAndCorrect())
-            {
-                BlocksCorrect = false;
+                BlockSpace BlockSpaceScript = Block.GetComponent<BlockSpace>();
+
+                if (!BlockSpaceScript.IsObjectSet())
+                {
+                    BlocksFilled = false;
+                }
+
+                if (!BlockSpaceScript.IsObjectSetAndCorrect())
+                {
+                    BlocksCorrect = false;
+                }
             }
         }
 
@@ -62,6 +68,8 @@ public class PlaybackMachine : MonoBehaviour {
 
     public void SetUpPlaybackMachine(int NumberOfSoundBlocks, float SoundClipLength)
     {
+        BlockSpaces = new List<GameObject>();
+
         //Get The Length of Playback machine
         Vector3 Shape = Vector3.Scale(GetComponent<MeshFilter>().sharedMesh.bounds.size,transform.localScale);
        
@@ -83,7 +91,10 @@ public class PlaybackMachine : MonoBehaviour {
 
             Gap += Spacing;
 
+
+            //AddBlockToList(NewSpace);
             BlockSpaces.Add(NewSpace);
+            //Debug.Log("BlockSpaces size: " + BlockSpaces.Count.ToString());
         }
 
         ClipLenght = SoundClipLength;
@@ -141,6 +152,13 @@ public class PlaybackMachine : MonoBehaviour {
         return IsBlocksPlaying;
     }
 
+    void AddBlockToList(GameObject Block)
+    {
 
+        if (!BlockSpaces.Contains(Block))
+        {
+            BlockSpaces.Add(Block);
+        }
+    }
 
 }

@@ -52,8 +52,13 @@ public class BlockSpace : MonoBehaviour {
             {
                 return false;
             }
+            else
+            {
+                return ObjectSet;
+            }
+
         }
-        return ObjectSet;
+        return false;
     }
 
     public bool IsObjectSet()

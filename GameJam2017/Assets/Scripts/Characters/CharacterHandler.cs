@@ -61,7 +61,7 @@ public class CharacterHandler : MonoBehaviour {
     {
         //when this function is called, remove the event so it's no longer attached to this object
         PlaybackMachine.OnSegmentWin -= BeginExitScene;
-        LeanTween.rotateY(this.gameObject,180.0f, 0.8f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(LeaveScene);
+        LeanTween.rotateY(this.gameObject,180.0f, 0.8f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(BeginLeavingScene);
         
     }
 
@@ -78,9 +78,9 @@ public class CharacterHandler : MonoBehaviour {
         PlayAlienSpeak();
     }
 
-    private void LeaveScene()
+    private void BeginLeavingScene()
     {
-    LeanTween.move(this.gameObject, startPosition, 2.0f).setEase(LeanTweenType.easeInOutQuad);
+    LeanTween.move(this.gameObject, startPosition, 2.0f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(LeftScene);
     }
 
     //when they've left, put the next character into the scene

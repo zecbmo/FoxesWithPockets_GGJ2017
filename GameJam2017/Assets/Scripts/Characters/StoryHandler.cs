@@ -35,11 +35,7 @@ public class StoryHandler : MonoBehaviour {
     //then we have the first character enter the scene
     private void InitialiseNewCharacters()
     {
-        for (int i = 0; i < storyClips.Length; i++)
-        {
-            myCharacters[i].InitialiseCharacter(storyClips[i], divisionValue);
-        }
-
+        myCharacters[currentCharacter].InitialiseCharacter(storyClips[currentCharacter], divisionValue);
         myCharacters[currentCharacter].EnterScene();
     }
 
@@ -54,6 +50,7 @@ public class StoryHandler : MonoBehaviour {
         }
         else
         {
+            myCharacters[currentCharacter].InitialiseCharacter(storyClips[currentCharacter], divisionValue);
             myCharacters[currentCharacter].EnterScene();
         }
     }
