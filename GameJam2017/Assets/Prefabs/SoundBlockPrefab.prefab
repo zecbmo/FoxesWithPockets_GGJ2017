@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114708671991949346}
   - component: {fileID: 82793008606651622}
   - component: {fileID: 114513109407879530}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SoundBlockPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1283690024671058}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.549, y: 1.539, z: 0.232}
+  m_LocalPosition: {x: 3.3587797, y: -1.8780403, z: 1.9407377}
   m_LocalScale: {x: 0.14999999, y: 0.14999999, z: 0.14999999}
   m_Children: []
   m_Father: {fileID: 0}
@@ -121,7 +121,8 @@ AudioSource:
   m_GameObject: {fileID: 1283690024671058}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243579955094484918, guid: 86410c9981c9f7a4e9a37458db066612,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.043

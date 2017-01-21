@@ -14,10 +14,16 @@ public class SoundBlock : MonoBehaviour {
     private float AudioEndPoint;
     private AudioSource Audio;
     private int ID;
-	
-	
-	// Update is called once per frame
-	void Update ()
+
+    public delegate void SoundBlockNearHead(AudioSource thisAudioSource);
+    public static event SoundBlockNearHead onSoundBlockNearHead;
+
+    public delegate void SoundBlockPutDown(AudioSource thisAudioSource);
+    public static event SoundBlockPutDown onSoundBlockPutDown;
+
+
+    // Update is called once per frame
+    void Update ()
     {
         if (Audio.time > AudioEndPoint)
         {
@@ -38,5 +44,25 @@ public class SoundBlock : MonoBehaviour {
 
     }
 
-  
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == 6)
+        {
+            onSoundBlockNearHead(Audio);
+            Debug.Log("DO SOMETHING ON NEAR HEAD");
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 6)
+        {
+            onSoundBlockPutDown(Audio);
+            Debug.Log("DO SOMETHING ON PUT DOWN");
+        }
+    }
+
+
 }

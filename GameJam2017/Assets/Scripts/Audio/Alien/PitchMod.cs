@@ -15,17 +15,24 @@ public class PitchMod : MonoBehaviour {
     float pitchMod;
 	// Use this for initialization
 	void Start () {
-        mySource = GetComponent<AudioSource>();
-        mySource.outputAudioMixerGroup = selectedGroup;
     }
 	
 	// Update is called once per frame
-	void Update () {   
-	}
+	void Update () {
+        PitchModFunction();
+
+    }
 
     private void PitchModFunction()
     {
-        pitchMod += Random.Range(0.04f, 0.1f);
+        if(randomBool())
+        {
+            pitchMod += Random.Range(0.1f, 0.29f);
+        }
+        else
+        {
+            pitchMod -= Random.Range(0.04f, 0.1f);
+        }
         if (pitchMod > 2.0) pitchMod = 0.3f;
 
            baseMixer.SetFloat("alienPitch",pitchMod);
