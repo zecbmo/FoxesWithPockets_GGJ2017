@@ -9,6 +9,9 @@ public class StoryHandler : MonoBehaviour {
     [SerializeField] private AudioClip[] storyClips;
 
     [SerializeField]
+    private string[] storyStrings;
+
+    [SerializeField]
     private CharacterHandler[] myCharacters;
 
     private int currentCharacter = 0;
@@ -24,6 +27,7 @@ public class StoryHandler : MonoBehaviour {
     public void PlayStory()
     {
         InitialiseNewCharacters();
+        SetWhiteBoard();
     }
 
     public void ResetStory()
@@ -53,6 +57,11 @@ public class StoryHandler : MonoBehaviour {
             myCharacters[currentCharacter].InitialiseCharacter(storyClips[currentCharacter], divisionValue);
             myCharacters[currentCharacter].EnterScene();
         }
+    }
+
+    private void SetWhiteBoard()
+    {
+        FindObjectOfType<Whiteboard>().SetupWhiteBoard(storyStrings);
     }
 
     private void FinishedCharacters()
