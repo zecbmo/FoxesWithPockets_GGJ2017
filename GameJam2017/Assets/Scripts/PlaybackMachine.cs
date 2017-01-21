@@ -18,14 +18,23 @@ public class PlaybackMachine : MonoBehaviour {
     //for playing blocks
     private int NumberOfBlocks = -1;
     bool IsBlocksPlaying = false;
-    private int CurrentBlock = 0;
+  
     private float ClipLenght = 0;
     private float TotalClipLenght = 0;
 
 
+    public delegate void SegmentWin();
+    public static event SegmentWin OnSegmentWin;
+
     [SerializeField]
     //Prefab of the Block Spaces
     private GameObject BlockSpacePrefab;
+
+
+    [SerializeField]
+    //Confetti Game Object
+    private GameObject Confetti;
+
 
     void Update()
     {
@@ -115,10 +124,15 @@ public class PlaybackMachine : MonoBehaviour {
     private void SetPlayingAsFalseAndCheckWin()
     {
         IsBlocksPlaying = false;
-
+        
         if (BlocksCorrect)
         {
             //You win
+            OnSegmentWin();
+
+            Confetti.SetActive(true);
+            //Play Audio Clip
+
         }
     }
 
