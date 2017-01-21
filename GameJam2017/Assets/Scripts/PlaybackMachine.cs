@@ -50,7 +50,8 @@ public class PlaybackMachine : MonoBehaviour {
             {
                 BlocksFilled = false;
             }
-            else if(!BlockSpaceScript.IsObjectSetAndCorrect())
+
+            if (!BlockSpaceScript.IsObjectSetAndCorrect())
             {
                 BlocksCorrect = false;
             }
