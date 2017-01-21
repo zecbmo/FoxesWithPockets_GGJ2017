@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlaybackMachine : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class PlaybackMachine : MonoBehaviour {
     */
 
     private List<GameObject> BlockSpaces = new List<GameObject>();
-
+    
     private bool BlocksFilled = false;
     private bool BlocksCorrect = false;
 
@@ -117,6 +118,9 @@ public class PlaybackMachine : MonoBehaviour {
 
     public void PlaySoundBlocks()
     {
+
+        FindObjectOfType<AudioMixer>().FindSnapshot("ListenToPlayback").TransitionTo(0.3f);
+
         IsBlocksPlaying = true;
      
         //Start the first block playing
@@ -143,6 +147,7 @@ public class PlaybackMachine : MonoBehaviour {
             OnSegmentWin();
             Reset();
             Confetti.SetActive(true);
+            FindObjectOfType<AudioMixer>().FindSnapshot("Default").TransitionTo(0.3f);
             //Play Audio Clip
 
         }

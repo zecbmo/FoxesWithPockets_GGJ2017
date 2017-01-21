@@ -22,13 +22,6 @@ public class SoundBlockMixHandler : MonoBehaviour {
         SoundBlock.onSoundBlockNearHead += ChangeSnapShotForNearHead;
         SoundBlock.onSoundBlockPutDown += ChangeSnapShotForPuttingDown;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-
     //These events are hooked to whenever the soundblock hits the head collider and change the active audio mixer group and snapshot for the audiosource
     private void ChangeSnapShotForNearHead(AudioSource thisAudioSource)
     {
