@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 33845912046067974}
   - component: {fileID: 135724205141822572}
   - component: {fileID: 23468535093947000}
-  m_Layer: 0
+  - component: {fileID: 114198139129911626}
+  m_Layer: 10
   m_Name: BlockSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,6 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706555961405748}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114198139129911626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706555961405748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 975475fa96df73842afbb4ca337dc08b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135724205141822572
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -87,7 +99,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706555961405748}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

@@ -44,6 +44,10 @@ public class SoundBlock : MonoBehaviour {
 
     }
 
+    public int GetID()
+    {
+        return ID;
+    }
 
 
     void OnTriggerEnter(Collider other)
@@ -52,7 +56,7 @@ public class SoundBlock : MonoBehaviour {
         {
             onSoundBlockNearHead(Audio);
             Debug.Log("DO SOMETHING ON NEAR HEAD");
-        }
+        }       
     }
 
     void OnTriggerExit(Collider other)
@@ -64,5 +68,9 @@ public class SoundBlock : MonoBehaviour {
         }
     }
 
+
+    
+
+    
 
 }
