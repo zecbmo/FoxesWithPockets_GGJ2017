@@ -21,15 +21,30 @@ public class SoundBlock : MonoBehaviour {
     public delegate void SoundBlockPutDown(AudioSource thisAudioSource);
     public static event SoundBlockPutDown onSoundBlockPutDown;
 
+    private bool PlaySoundOnce;
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
         if (Audio.time > AudioEndPoint)
         {
+            if (PlaySoundOnce)
+            {
+                Audio.Stop();
+                PlaySoundOnce = false;
+            }
+            else
+            {
+                Audio.time = AudioStartPoint;
+            }
+        }
+
+
+        if (Audio.time < AudioStartPoint)
+        {
             Audio.time = AudioStartPoint;
-        }	
-	}
+        }
+    }
 
     public void SetUpAudio(AudioClip Clip, float StartPoint, float EndPoint, int SoundBlockID)
     {
@@ -68,7 +83,12 @@ public class SoundBlock : MonoBehaviour {
         }
     }
 
-
+    public void PlayOnce(float Delay)
+    {
+        PlaySoundOnce = true;
+        Audio.time = AudioStartPoint;
+        Audio.PlayDelayed(Delay);
+    }
     
 
     

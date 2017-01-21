@@ -15,6 +15,13 @@ public class PlaybackMachine : MonoBehaviour {
     private bool BlocksFilled = false;
     private bool BlocksCorrect = false;
 
+    //for playing blocks
+    private int NumberOfBlocks = -1;
+    bool IsBlocksPlaying = false;
+    private int CurrentBlock = 0;
+    private float ClipLenght = 0;
+    private float TotalClipLenght = 0;
+
 
     [SerializeField]
     //Prefab of the Block Spaces
@@ -39,21 +46,24 @@ public class PlaybackMachine : MonoBehaviour {
                 BlocksCorrect = false;
             }
         }
+
+     
+
     }
 
-    public void SetUpPlaybackMachine(int NumberOfBlocks)
+    public void SetUpPlaybackMachine(int NumberOfSoundBlocks, float SoundClipLength)
     {
         //Get The Length of Playback machine
         Vector3 Shape = Vector3.Scale(GetComponent<MeshFilter>().mesh.bounds.size,transform.localScale);
        
         Vector3 Centre = transform.localPosition;
-
+        NumberOfBlocks = NumberOfSoundBlocks;
         
-        float Spacing = Shape.x / NumberOfBlocks;
+        float Spacing = Shape.x / NumberOfSoundBlocks;
 
         float Gap = 0.0f;
 
-        for (int i = 1; i <= NumberOfBlocks; i++)
+        for (int i = 1; i <= NumberOfSoundBlocks; i++)
         {
             //Set up the block space position based on this and create them
             GameObject NewSpace = Instantiate(BlockSpacePrefab, Centre, transform.rotation);
@@ -66,6 +76,10 @@ public class PlaybackMachine : MonoBehaviour {
 
             BlockSpaces.Add(NewSpace);
         }
+
+        ClipLenght = SoundClipLength;
+        TotalClipLenght = SoundClipLength * NumberOfBlocks +0.2f; //Add a minor delay to the end - a small pause between being able to hit play again
+
     }
 
     public bool IsBlocksFilled()
@@ -77,6 +91,42 @@ public class PlaybackMachine : MonoBehaviour {
     {
         return BlocksCorrect;
     }
+
+
+
+    public void PlaySoundBlocks()
+    {
+        IsBlocksPlaying = true;
+     
+        //Start the first block playing
+        float Delay = 0;
+
+        foreach (GameObject Block in BlockSpaces)
+        {
+            BlockSpace BlockSpaceScript = Block.GetComponent<BlockSpace>();
+            BlockSpaceScript.PlayOnce(Delay);
+            Delay += ClipLenght;
+        }
+
+        Invoke("SetPlayingAsFalseAndCheckWin", TotalClipLenght);
+        
+    }
+
+    private void SetPlayingAsFalseAndCheckWin()
+    {
+        IsBlocksPlaying = false;
+
+        if (BlocksCorrect)
+        {
+            //You win
+        }
+    }
+
+    public bool AreBlocksPlaying()
+    {
+        return IsBlocksPlaying;
+    }
+
 
 
 }

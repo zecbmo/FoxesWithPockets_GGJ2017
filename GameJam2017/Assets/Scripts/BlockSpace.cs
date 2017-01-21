@@ -61,4 +61,10 @@ public class BlockSpace : MonoBehaviour {
         return ObjectSet;
     }
 
+    public void PlayOnce(float Delay)
+    {
+        FittedBlock.GetComponent<SoundBlock>().PlayOnce(Delay);
+    }
+
+   
 }

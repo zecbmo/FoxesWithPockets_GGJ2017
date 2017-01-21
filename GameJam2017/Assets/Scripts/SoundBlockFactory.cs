@@ -84,7 +84,7 @@ public class SoundBlockFactory : MonoBehaviour {
 
             //Set up the playback machine
             PlaybackMachine PlaybackMachineScript = PlaybackMachineObject.GetComponent<PlaybackMachine>();
-            PlaybackMachineScript.SetUpPlaybackMachine(DivideAmount);
+            PlaybackMachineScript.SetUpPlaybackMachine(DivideAmount, SampleSize);
             
         }
 
