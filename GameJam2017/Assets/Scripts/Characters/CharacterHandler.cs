@@ -71,7 +71,8 @@ public class CharacterHandler : MonoBehaviour {
         thisSpawner.SpawnBlocks();
     }
 
-    //
+    //these callback functions are for activating text/movement after tweens
+
     private void OnSceneEntered()
     {
         PlayAlienSpeak();
@@ -81,4 +82,7 @@ public class CharacterHandler : MonoBehaviour {
     {
     LeanTween.move(this.gameObject, startPosition, 2.0f).setEase(LeanTweenType.easeInOutQuad);
     }
+
+    //when they've left, put the next character into the scene
+    private void LeftScene() { GetComponentInParent<StoryHandler>().NextCharacter();}
 }
