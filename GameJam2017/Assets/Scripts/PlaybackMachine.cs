@@ -68,7 +68,7 @@ public class PlaybackMachine : MonoBehaviour {
 
     public void SetUpPlaybackMachine(int NumberOfSoundBlocks, float SoundClipLength)
     {
-        
+        BlockSpaces = new List<GameObject>();
 
         //Get The Length of Playback machine
         Vector3 Shape = Vector3.Scale(GetComponent<MeshFilter>().sharedMesh.bounds.size,transform.localScale);
@@ -83,7 +83,7 @@ public class PlaybackMachine : MonoBehaviour {
         for (int i = 1; i <= NumberOfSoundBlocks; i++)
         {
             //Set up the block space position based on this and create them
-            GameObject NewSpace = Instantiate(BlockSpacePrefab, Centre, transform.rotation) as GameObject;
+            GameObject NewSpace = Instantiate(BlockSpacePrefab, Centre, transform.rotation);
             BlockSpace NewSpaceScript = NewSpace.GetComponent<BlockSpace>();
             NewSpaceScript.SetID(i-1);
            
@@ -91,9 +91,9 @@ public class PlaybackMachine : MonoBehaviour {
 
             Gap += Spacing;
 
-            
-            AddBlockToList(NewSpace);
 
+            //AddBlockToList(NewSpace);
+            BlockSpaces.Add(NewSpace);
             //Debug.Log("BlockSpaces size: " + BlockSpaces.Count.ToString());
         }
 
