@@ -58,29 +58,6 @@ public class SoundBlockFactory : MonoBehaviour {
             AudioLength = SourceAudioFile.length;
             SampleSize = AudioLength / (float)DivideAmount;
 
-            float AudioStartPoint = 0;
-            float AudioEndPoint = SampleSize;
-
-            for (int i = 1; i <= DivideAmount; i++)
-            {
-                if (i == DivideAmount)
-                {
-                    AudioEndPoint = AudioLength;
-                }
-
-                //Create the AudioBlock Here and initialise it based on these Settings
-                GameObject NewSoundBlock = Instantiate(SoundBlockPrefab, transform.position, Quaternion.identity);
-                SoundBlock NewSoundScript = NewSoundBlock.GetComponent<SoundBlock>();
-                NewSoundScript.SetUpAudio(SourceAudioFile, AudioStartPoint, AudioEndPoint, i-1); //-1 to make it 0 - fixes problems later on for ID
-
-                //Wait here?
-
-                //Update Sample points for next object
-                AudioStartPoint += SampleSize;
-                AudioEndPoint += SampleSize;
-                         
-
-            }
 
             //Set up the playback machine
             PlaybackMachine PlaybackMachineScript = PlaybackMachineObject.GetComponent<PlaybackMachine>();
@@ -89,5 +66,31 @@ public class SoundBlockFactory : MonoBehaviour {
         }
 
 	}
+
+    public void SpawnBlocks()
+    {
+
+        float AudioStartPoint = 0;
+        float AudioEndPoint = SampleSize;
+
+        for (int i = 1; i <= DivideAmount; i++)
+        {
+            if (i == DivideAmount)
+            {
+                AudioEndPoint = AudioLength;
+            }
+
+            //Create the AudioBlock Here and initialise it based on these Settings
+            GameObject NewSoundBlock = Instantiate(SoundBlockPrefab, transform.position, Quaternion.identity);
+            SoundBlock NewSoundScript = NewSoundBlock.GetComponent<SoundBlock>();
+            NewSoundScript.SetUpAudio(SourceAudioFile, AudioStartPoint, AudioEndPoint, i - 1); //-1 to make it 0 - fixes problems later on for ID
+
+            //Wait here?
+
+            //Update Sample points for next object
+            AudioStartPoint += SampleSize;
+            AudioEndPoint += SampleSize;
+        }
+    }
 
 }

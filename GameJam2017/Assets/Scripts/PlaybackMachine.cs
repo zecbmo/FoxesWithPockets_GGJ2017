@@ -54,7 +54,7 @@ public class PlaybackMachine : MonoBehaviour {
     public void SetUpPlaybackMachine(int NumberOfSoundBlocks, float SoundClipLength)
     {
         //Get The Length of Playback machine
-        Vector3 Shape = Vector3.Scale(GetComponent<MeshFilter>().mesh.bounds.size,transform.localScale);
+        Vector3 Shape = Vector3.Scale(GetComponent<MeshFilter>().sharedMesh.bounds.size,transform.localScale);
        
         Vector3 Centre = transform.localPosition;
         NumberOfBlocks = NumberOfSoundBlocks;
