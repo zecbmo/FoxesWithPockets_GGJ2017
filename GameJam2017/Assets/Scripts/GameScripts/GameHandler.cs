@@ -26,7 +26,7 @@ public class GameHandler : MonoBehaviour {
 
         Debug.Log("START NEW STORY" + currentStory);
 
-        for (int i = 0; i < stories.Length - 1; i++)
+        for (int i = 0; i < stories.Length; i++)
         {
             if (i == currentStory)
             {
