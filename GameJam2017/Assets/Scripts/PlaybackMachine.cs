@@ -40,7 +40,7 @@ public class PlaybackMachine : MonoBehaviour {
     void Update()
     {
         //Check the block spaces 
-
+        
         if (BlockSpaces.Count != 0)
         {
             BlocksFilled = true;
@@ -61,9 +61,6 @@ public class PlaybackMachine : MonoBehaviour {
                 }
             }
         }
-
-     
-
     }
 
     public void SetUpPlaybackMachine(int NumberOfSoundBlocks, float SoundClipLength)
@@ -94,8 +91,12 @@ public class PlaybackMachine : MonoBehaviour {
 
             //AddBlockToList(NewSpace);
             BlockSpaces.Add(NewSpace);
+            Debug.Log("ADD BLOCK TO LIST");
+            Debug.Log(BlockSpaces.Count);
             //Debug.Log("BlockSpaces size: " + BlockSpaces.Count.ToString());
         }
+
+        Debug.Log(BlockSpaces);
 
         ClipLenght = SoundClipLength;
         TotalClipLenght = SoundClipLength * NumberOfBlocks +0.2f; //Add a minor delay to the end - a small pause between being able to hit play again

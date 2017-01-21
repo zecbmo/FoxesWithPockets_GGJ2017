@@ -12,19 +12,16 @@ public class Whiteboard : MonoBehaviour
 
     void Start()
     {
-        SetupWhiteBoard();
-
         PlaybackMachine.OnSegmentWin += RevealNextClue;
-        
-
     }
-    public void SetupWhiteBoard()
+
+    public void SetupWhiteBoard(string[] storyStrings)
     {
         Vector3 Shape = Vector3.Scale(GetComponent<MeshFilter>().sharedMesh.bounds.size, transform.localScale);
 
         Vector3 Centre = transform.localPosition;
 
-        int NumberOfClues = 6;
+        int NumberOfClues = storyStrings.Length; 
        
         float Spacing2 = 30.0f;
        
@@ -34,11 +31,9 @@ public class Whiteboard : MonoBehaviour
         {
 
             GameObject NewObject = new GameObject();
-           
-
-
+          
             Text text = NewObject.AddComponent<Text>();
-            text.text = "Fuck You!";
+            text.text = storyStrings[i-1];
 
             RectTransform TextRect = NewObject.GetComponent<RectTransform>();
             TextRect.sizeDelta = new Vector2(500, 40);

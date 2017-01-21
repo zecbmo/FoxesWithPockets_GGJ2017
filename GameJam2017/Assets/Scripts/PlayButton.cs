@@ -13,9 +13,6 @@ public class PlayButton : MonoBehaviour
     {
         GetComponent<VRTK_Button>().events.OnPush.AddListener(handlePush);
         PlaybackMachineScript = PlaybackMachineObject.GetComponent<PlaybackMachine>();
-
-       
-
     }
 
     

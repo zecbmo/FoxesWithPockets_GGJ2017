@@ -33,7 +33,7 @@ public class SoundBlockFactory : MonoBehaviour {
     //This will be The object that will be created
     private GameObject SoundBlockPrefab;
 
-    [SerializeField]
+  //  [SerializeField]
     //Reference to the playback machine that should be in the scene
     private GameObject PlaybackMachineObject;
 
@@ -46,6 +46,7 @@ public class SoundBlockFactory : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        PlaybackMachineObject = FindObjectOfType<PlaybackMachine>().gameObject;
 	}
 
     //take initialise function outside of start - allows us to store audioclips in a spawner rather than the individual character
