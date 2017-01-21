@@ -67,7 +67,7 @@ public class SoundBlock : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 6)
+        if(other.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
             onSoundBlockNearHead(Audio);
             Debug.Log("DO SOMETHING ON NEAR HEAD");
@@ -76,7 +76,7 @@ public class SoundBlock : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == 6)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
             onSoundBlockPutDown(Audio);
             Debug.Log("DO SOMETHING ON PUT DOWN");
