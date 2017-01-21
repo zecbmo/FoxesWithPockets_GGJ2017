@@ -36,6 +36,11 @@ public class PlaybackMachine : MonoBehaviour {
     //Confetti Game Object
     private GameObject Confetti;
 
+
+    [SerializeField]
+    //audio mixer object for handling transitions
+    private AudioMixer theMixer;
+
   
 
     void Update()
@@ -119,7 +124,7 @@ public class PlaybackMachine : MonoBehaviour {
     public void PlaySoundBlocks()
     {
 
-        FindObjectOfType<AudioMixer>().FindSnapshot("ListenToPlayback").TransitionTo(0.3f);
+        theMixer.FindSnapshot("ListenToPlayback").TransitionTo(0.3f);
 
         IsBlocksPlaying = true;
      
@@ -147,7 +152,7 @@ public class PlaybackMachine : MonoBehaviour {
             OnSegmentWin();
             Reset();
             Confetti.SetActive(true);
-            FindObjectOfType<AudioMixer>().FindSnapshot("Default").TransitionTo(0.3f);
+            theMixer.FindSnapshot("Default").TransitionTo(0.3f);
             //Play Audio Clip
 
         }
