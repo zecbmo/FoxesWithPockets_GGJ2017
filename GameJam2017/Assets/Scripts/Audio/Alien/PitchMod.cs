@@ -6,9 +6,6 @@ using UnityEngine.Audio;
 public class PitchMod : MonoBehaviour {
 
     [SerializeField]
-    AudioMixerGroup selectedGroup;
-
-    [SerializeField]
     AudioMixer baseMixer;
     AudioSource mySource;
 
