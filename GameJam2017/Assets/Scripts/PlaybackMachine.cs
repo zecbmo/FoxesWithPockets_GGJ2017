@@ -35,25 +35,30 @@ public class PlaybackMachine : MonoBehaviour {
     //Confetti Game Object
     private GameObject Confetti;
 
+  
 
     void Update()
     {
         //Check the block spaces 
-        BlocksFilled = true;
-        BlocksCorrect = true;
 
-        foreach (GameObject Block in BlockSpaces)
+        if (BlockSpaces.Count != 0)
         {
-            BlockSpace BlockSpaceScript = Block.GetComponent<BlockSpace>();
+            BlocksFilled = true;
+            BlocksCorrect = true;
 
-            if (!BlockSpaceScript.IsObjectSet())
+            foreach (GameObject Block in BlockSpaces)
             {
-                BlocksFilled = false;
-            }
+                BlockSpace BlockSpaceScript = Block.GetComponent<BlockSpace>();
 
-            if (!BlockSpaceScript.IsObjectSetAndCorrect())
-            {
-                BlocksCorrect = false;
+                if (!BlockSpaceScript.IsObjectSet())
+                {
+                    BlocksFilled = false;
+                }
+
+                if (!BlockSpaceScript.IsObjectSetAndCorrect())
+                {
+                    BlocksCorrect = false;
+                }
             }
         }
 
@@ -63,6 +68,8 @@ public class PlaybackMachine : MonoBehaviour {
 
     public void SetUpPlaybackMachine(int NumberOfSoundBlocks, float SoundClipLength)
     {
+        
+
         //Get The Length of Playback machine
         Vector3 Shape = Vector3.Scale(GetComponent<MeshFilter>().sharedMesh.bounds.size,transform.localScale);
        
@@ -76,7 +83,7 @@ public class PlaybackMachine : MonoBehaviour {
         for (int i = 1; i <= NumberOfSoundBlocks; i++)
         {
             //Set up the block space position based on this and create them
-            GameObject NewSpace = Instantiate(BlockSpacePrefab, Centre, transform.rotation);
+            GameObject NewSpace = Instantiate(BlockSpacePrefab, Centre, transform.rotation) as GameObject;
             BlockSpace NewSpaceScript = NewSpace.GetComponent<BlockSpace>();
             NewSpaceScript.SetID(i-1);
            
@@ -84,7 +91,10 @@ public class PlaybackMachine : MonoBehaviour {
 
             Gap += Spacing;
 
-            BlockSpaces.Add(NewSpace);
+            
+            AddBlockToList(NewSpace);
+
+            //Debug.Log("BlockSpaces size: " + BlockSpaces.Count.ToString());
         }
 
         ClipLenght = SoundClipLength;
@@ -142,6 +152,13 @@ public class PlaybackMachine : MonoBehaviour {
         return IsBlocksPlaying;
     }
 
+    void AddBlockToList(GameObject Block)
+    {
 
+        if (!BlockSpaces.Contains(Block))
+        {
+            BlockSpaces.Add(Block);
+        }
+    }
 
 }
