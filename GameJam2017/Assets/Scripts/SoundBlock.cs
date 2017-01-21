@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SoundBlock : MonoBehaviour {
 
     /**
@@ -14,6 +15,8 @@ public class SoundBlock : MonoBehaviour {
     private float AudioEndPoint;
     private AudioSource Audio;
     private int ID;
+
+   
 
     public delegate void SoundBlockNearHead(AudioSource thisAudioSource);
     public static event SoundBlockNearHead onSoundBlockNearHead;
