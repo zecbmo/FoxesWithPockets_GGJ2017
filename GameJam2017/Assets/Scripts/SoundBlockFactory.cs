@@ -15,6 +15,8 @@ public class SoundBlockFactory : MonoBehaviour {
      *  e.g. so a sound file, 1 mintue long, that we want divided by 6 will create four blocks.
      *  The first block will start the audio at 0 and finish at 10 seconds
      *  The second will start at 10 seconds and finish at 20 and so on.
+     *
+     *  It will also set up the placback machine for these blocks - The Tape player
      */
 
 
@@ -30,6 +32,10 @@ public class SoundBlockFactory : MonoBehaviour {
     [SerializeField]
     //This will be The object that will be created
     private GameObject SoundBlockPrefab;
+
+    [SerializeField]
+    //Reference to the playback machine that should be in the scene
+    private GameObject PlaybackMachineObject;
 
     //Length of the audio file
     private float AudioLength;
@@ -63,7 +69,7 @@ public class SoundBlockFactory : MonoBehaviour {
                 }
 
                 //Create the AudioBlock Here and initialise it based on these Settings
-                GameObject NewSoundBlock = Instantiate(SoundBlockPrefab);
+                GameObject NewSoundBlock = Instantiate(SoundBlockPrefab, transform.position, Quaternion.identity);
                 SoundBlock NewSoundScript = NewSoundBlock.GetComponent<SoundBlock>();
                 NewSoundScript.SetUpAudio(SourceAudioFile, AudioStartPoint, AudioEndPoint, i-1); //-1 to make it 0 - fixes problems later on for ID
 
@@ -75,6 +81,11 @@ public class SoundBlockFactory : MonoBehaviour {
                          
 
             }
+
+            //Set up the playback machine
+            PlaybackMachine PlaybackMachineScript = PlaybackMachineObject.GetComponent<PlaybackMachine>();
+            PlaybackMachineScript.SetUpPlaybackMachine(DivideAmount);
+            
         }
 
 	}
