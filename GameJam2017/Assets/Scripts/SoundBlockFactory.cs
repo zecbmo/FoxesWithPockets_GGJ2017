@@ -58,9 +58,7 @@ public class SoundBlockFactory : MonoBehaviour {
         SampleSize = AudioLength / (float)DivideAmount;
 
 
-        //Set up the playback machine
-        PlaybackMachine PlaybackMachineScript = PlaybackMachineObject.GetComponent<PlaybackMachine>();
-        PlaybackMachineScript.SetUpPlaybackMachine(DivideAmount, SampleSize);
+        
     }
 
 
@@ -88,5 +86,9 @@ public class SoundBlockFactory : MonoBehaviour {
             AudioStartPoint += SampleSize;
             AudioEndPoint += SampleSize;
         }
+
+        //Set up the playback machine
+        PlaybackMachine PlaybackMachineScript = PlaybackMachineObject.GetComponent<PlaybackMachine>();
+        PlaybackMachineScript.SetUpPlaybackMachine(DivideAmount, SampleSize);
     }
 }
