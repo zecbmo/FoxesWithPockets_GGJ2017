@@ -140,7 +140,7 @@ public class PlaybackMachine : MonoBehaviour {
         {
             //You win
             OnSegmentWin();
-
+            Reset();
             Confetti.SetActive(true);
             //Play Audio Clip
 
@@ -159,6 +159,17 @@ public class PlaybackMachine : MonoBehaviour {
         {
             BlockSpaces.Add(Block);
         }
+    }
+
+    void Reset()
+    {
+        foreach (GameObject Block in BlockSpaces)
+        {
+            BlockSpace BlockSpaceScript = Block.GetComponent<BlockSpace>();
+            BlockSpaceScript.DestroyFittedObject();
+            Destroy(Block);
+        }
+        BlockSpaces.Clear();
     }
 
 }

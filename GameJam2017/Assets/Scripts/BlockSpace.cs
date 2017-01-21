@@ -71,5 +71,8 @@ public class BlockSpace : MonoBehaviour {
         FittedBlock.GetComponent<SoundBlock>().PlayOnce(Delay);
     }
 
-   
+    public void DestroyFittedObject()
+    {
+        Destroy(FittedBlock);
+    }
 }
