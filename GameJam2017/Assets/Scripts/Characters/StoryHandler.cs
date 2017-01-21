@@ -14,6 +14,9 @@ public class StoryHandler : MonoBehaviour {
     [SerializeField]
     private CharacterHandler[] myCharacters;
 
+    [SerializeField]
+    private GameObject[] answerGameobjects;
+
     private int currentCharacter = 0;
 	
 	// Update is called once per frame
@@ -26,8 +29,18 @@ public class StoryHandler : MonoBehaviour {
 
     public void PlayStory()
     {
-        InitialiseNewCharacters();
-        SetWhiteBoard();
+        if ((storyStrings.Length == myCharacters.Length && storyStrings.Length == storyClips.Length) && answerGameobjects.Length != 0)
+        {
+            InitialiseNewCharacters();
+            SetWhiteBoard();
+        }
+        else
+        {
+            Debug.Log("The amount of strings/Characters/Clips need to be the same");
+            Application.Quit();
+        }
+
+        
     }
 
     public void ResetStory()
@@ -66,7 +79,11 @@ public class StoryHandler : MonoBehaviour {
 
     private void FinishedCharacters()
     {
+        for (int i = 0; i < answerGameobjects.Length; i++)
+        {
+            Instantiate(answerGameobjects[i], transform.position, Quaternion.identity);
+        }
        
-        Debug.Log("THIS IS WHERE WE'LL ACTIVATE THE BIN");
+       // Debug.Log("THIS IS WHERE WE'LL ACTIVATE THE BIN");
     }
 }
