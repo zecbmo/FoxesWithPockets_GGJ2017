@@ -21,11 +21,11 @@ public class SoundBlockFactory : MonoBehaviour {
 
 
     
-    [SerializeField]
+  //  [SerializeField]
     //The Amount to divide up the audio file
     private int DivideAmount = 1;
 
-    [SerializeField]
+   // [SerializeField]
     //The source audio clip to break up
     private AudioClip SourceAudioFile;
 
@@ -46,26 +46,23 @@ public class SoundBlockFactory : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        if (DivideAmount <= 0)
-        {
-            Debug.Log("You Can't Divide by 0 : Please Set the Divide amount in the Sound block Factory");
-            Application.Quit();
-        }
-
-        if (SourceAudioFile)
-        {
-            //Get the audio length and set the smaple size
-            AudioLength = SourceAudioFile.length;
-            SampleSize = AudioLength / (float)DivideAmount;
-
-
-            //Set up the playback machine
-            PlaybackMachine PlaybackMachineScript = PlaybackMachineObject.GetComponent<PlaybackMachine>();
-            PlaybackMachineScript.SetUpPlaybackMachine(DivideAmount, SampleSize);
-            
-        }
-
 	}
+
+    //take initialise function outside of start - allows us to store audioclips in a spawner rather than the individual character
+    public void InitialiseBlocks(AudioClip myAudioClip, int myDivideAmount)
+    {
+        SourceAudioFile = myAudioClip;
+        DivideAmount = myDivideAmount;
+        //Get the audio length and set the smaple size
+        AudioLength = SourceAudioFile.length;
+        SampleSize = AudioLength / (float)DivideAmount;
+
+
+        //Set up the playback machine
+        PlaybackMachine PlaybackMachineScript = PlaybackMachineObject.GetComponent<PlaybackMachine>();
+        PlaybackMachineScript.SetUpPlaybackMachine(DivideAmount, SampleSize);
+    }
+
 
     public void SpawnBlocks()
     {
@@ -92,5 +89,4 @@ public class SoundBlockFactory : MonoBehaviour {
             AudioEndPoint += SampleSize;
         }
     }
-
 }
