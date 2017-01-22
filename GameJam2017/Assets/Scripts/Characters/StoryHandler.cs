@@ -17,27 +17,36 @@ public class StoryHandler : MonoBehaviour {
     [SerializeField]
     private GameObject[] answerGameobjects;
 
+    private bool storyPlaying;
+
     private int currentCharacter = 0;
 	
+    void Start()
+    {
+        PlayStory();
+    }
 	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            PlayStory();
-        }
+	void Update () { 	
+
+      
 	}
 
     public void PlayStory()
     {
-        if ((storyStrings.Length == myCharacters.Length && storyStrings.Length == storyClips.Length) && answerGameobjects.Length != 0)
+        if (!storyPlaying)
         {
-            InitialiseNewCharacters();
-            SetWhiteBoard();
-        }
-        else
-        {
-            Debug.Log("The amount of strings/Characters/Clips need to be the same");
-            Application.Quit();
+            if ((storyStrings.Length == myCharacters.Length && storyStrings.Length == storyClips.Length) && answerGameobjects.Length != 0)
+            {
+                storyPlaying = true;
+                InitialiseNewCharacters();
+                SetWhiteBoard();
+            }
+
+            else
+            {
+                Debug.Log("The amount of strings/Characters/Clips need to be the same");
+                Application.Quit();
+            }
         }
 
         
@@ -45,6 +54,7 @@ public class StoryHandler : MonoBehaviour {
 
     public void ResetStory()
     {
+        storyPlaying = false;
         currentCharacter = 0;
     }
 

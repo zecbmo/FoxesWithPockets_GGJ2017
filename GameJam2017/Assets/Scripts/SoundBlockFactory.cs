@@ -43,6 +43,14 @@ public class SoundBlockFactory : MonoBehaviour {
     //How long each sample should be
     private float SampleSize;
 
+
+    
+    //Reference to the playback machine that should be in the scene
+    [SerializeField]
+    private float spawnRange;
+    private float xModifier;
+    private Vector3 spawnPosition;
+
     // Use this for initialization
     void Start ()
     {
@@ -58,6 +66,11 @@ public class SoundBlockFactory : MonoBehaviour {
         AudioLength = SourceAudioFile.length;
         SampleSize = AudioLength / (float)DivideAmount;
 
+        //x modifier is the range we want them to spawn in (
+        xModifier = spawnRange / myDivideAmount;
+
+        //set initial spawn position to be the far left point
+        spawnPosition = gameObject.transform.position - new Vector3((gameObject.transform.position.x - spawnRange / 2), 0);
 
         
     }
@@ -77,7 +90,9 @@ public class SoundBlockFactory : MonoBehaviour {
             }
 
             //Create the AudioBlock Here and initialise it based on these Settings
-            GameObject NewSoundBlock = Instantiate(SoundBlockPrefab, transform.position, Quaternion.identity);
+            GameObject NewSoundBlock = Instantiate(SoundBlockPrefab, spawnPosition, Quaternion.identity);
+            //after we spawn a block, make the next spawn position increase by the x modifier
+            spawnPosition = gameObject.transform.position + new Vector3(xModifier,0);
             SoundBlock NewSoundScript = NewSoundBlock.GetComponent<SoundBlock>();
             NewSoundScript.SetUpAudio(SourceAudioFile, AudioStartPoint, AudioEndPoint, i - 1); //-1 to make it 0 - fixes problems later on for ID
 

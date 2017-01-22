@@ -28,19 +28,6 @@ public class CharacterHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.LeftControl) && !movingIn)
-        {
-            movingIn = true;
-            EnterScene();
-            Debug.Log("ENTERING SCENE");
-        }
-
-        if (Input.GetKey(KeyCode.RightControl) && !leavingScene)
-        {
-            leavingScene = true;
-            BeginExitScene();
-            Debug.Log("LEAVE SCENE");
-        }
     }
 
 
@@ -52,7 +39,6 @@ public class CharacterHandler : MonoBehaviour {
     public void EnterScene()
     {
         //when we enter the scene, tie the playback machines win event to the character leaving
-     
         PlaybackMachine.OnSegmentWin += BeginExitScene;
         LeanTween.move(this.gameObject, interviewPosition, 2.0f).setEase(LeanTweenType.easeOutQuad).setOnComplete(OnSceneEntered);
     }
@@ -67,10 +53,21 @@ public class CharacterHandler : MonoBehaviour {
 
     private void PlayAlienSpeak()
     {
+        Debug.Log("ENTERED  SCENE");
         myAudioSource.Play();
-        thisSpawner.SpawnBlocks();
+        StartCoroutine(StartMethod(myAudioSource.clip.length));
     }
 
+    private IEnumerator StartMethod(float clipLength)
+    {
+
+        
+        yield return new WaitForSeconds(clipLength);
+        Debug.Log("FINISHED SPEAKING, SPAWN BLOCKS");
+        thisSpawner.SpawnBlocks();
+
+    }
+    
     //these callback functions are for activating text/movement after tweens
 
     private void OnSceneEntered()
