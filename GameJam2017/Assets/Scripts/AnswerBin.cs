@@ -24,7 +24,7 @@ public class AnswerBin : MonoBehaviour {
     public delegate void GameLose();
     public static event GameLose OnGameLose;
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Answer"))
         {
