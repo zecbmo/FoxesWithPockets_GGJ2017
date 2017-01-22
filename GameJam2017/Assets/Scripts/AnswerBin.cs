@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class AnswerBin : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public GameObject WinConfetti;
+    public GameObject LoseConfetti;
+
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -20,7 +24,7 @@ public class AnswerBin : MonoBehaviour {
     public delegate void GameLose();
     public static event GameLose OnGameLose;
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Answer"))
         {
@@ -28,10 +32,14 @@ public class AnswerBin : MonoBehaviour {
 
             if (Answer.CorrectAnswer)
             {
+                Debug.Log("Game Won");
+                WinConfetti.SetActive(true);
                 OnGameWin();
             }
             else
             {
+                Debug.Log("Game Lost");
+                LoseConfetti.SetActive(true);
                 OnGameLose();
             }
         }

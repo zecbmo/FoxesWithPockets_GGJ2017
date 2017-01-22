@@ -17,9 +17,11 @@ public class CharacterHandler : MonoBehaviour {
     private bool movingIn;
     private bool leavingScene;
 
+    private int numberOfDivisions = 0;
+
     private AudioSource myAudioSource;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         thisSpawner = GetComponentInChildren<SoundBlockFactory>();
         myAudioSource = GetComponentInChildren<AudioSource>();
         interviewPosition = interviewPositionTransform.position;
@@ -34,6 +36,7 @@ public class CharacterHandler : MonoBehaviour {
     public void InitialiseCharacter(AudioClip thisAudio,int divisions)
     {
         thisSpawner.InitialiseBlocks(thisAudio, divisions);
+        numberOfDivisions = divisions;
     }
 
     public void EnterScene()
@@ -55,16 +58,23 @@ public class CharacterHandler : MonoBehaviour {
     {
         Debug.Log("ENTERED  SCENE");
         myAudioSource.Play();
-        StartCoroutine(StartMethod(myAudioSource.clip.length));
+        StartCoroutine(StartMethod(myAudioSource.clip.length/(float)numberOfDivisions));
     }
+
+    
 
     private IEnumerator StartMethod(float clipLength)
     {
 
         
         yield return new WaitForSeconds(clipLength);
-        Debug.Log("FINISHED SPEAKING, SPAWN BLOCKS");
-        thisSpawner.SpawnBlocks();
+        Debug.Log("SPAWING NEXT BLOCK");
+        thisSpawner.SpawnNextBlock();
+
+        if (thisSpawner.SoundBlocksStillToSpawn())
+        {
+            StartCoroutine(StartMethod(clipLength));
+        }
 
     }
     

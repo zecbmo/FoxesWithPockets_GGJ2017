@@ -89,11 +89,30 @@ public class StoryHandler : MonoBehaviour {
 
     private void FinishedCharacters()
     {
+        float SpawnWait = 0.5f;
+
+        Vector3 SpawnPoint = GameObject.Find("AnswerSpawnPoint").transform.position;
         for (int i = 0; i < answerGameobjects.Length; i++)
         {
-            Instantiate(answerGameobjects[i], transform.position, Quaternion.identity);
+            StartCoroutine(AnswerSpawner(i * SpawnWait, i, SpawnPoint));
         }
        
        // Debug.Log("THIS IS WHERE WE'LL ACTIVATE THE BIN");
+    }
+
+    private IEnumerator AnswerSpawner(float waitLength,int answerToSpawn, Vector3 SpawnPoint)
+    {
+
+        float force = 70.0f;
+        float force2 = 20.0f;
+
+        yield return new WaitForSeconds(waitLength);
+        Debug.Log("SPAWING Answers");
+        GameObject newAnswer = Instantiate(answerGameobjects[answerToSpawn], SpawnPoint, Quaternion.identity);
+        float xForce = Random.Range(-force, force);
+        float zForce = Random.Range(-force2, force2);
+
+        newAnswer.GetComponent<Rigidbody>().AddForce(new Vector3(xForce,0, zForce));
+
     }
 }

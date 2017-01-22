@@ -17,7 +17,7 @@ public class Whiteboard : MonoBehaviour
 
     public void SetupWhiteBoard(string[] storyStrings)
     {
-        Vector3 Shape = Vector3.Scale(GetComponent<MeshFilter>().sharedMesh.bounds.size, transform.localScale);
+        //Vector3 Shape = Vector3.Scale(GetComponent<MeshFilter>().sharedMesh.bounds.size, transform.localScale);
 
         Vector3 Centre = transform.localPosition;
 
