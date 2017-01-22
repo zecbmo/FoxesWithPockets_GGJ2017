@@ -6,4 +6,6 @@ public class AnswerBlock : MonoBehaviour {
 
     // Use this for initialization
     public bool CorrectAnswer = false;
+
+    public string Text;
 }
