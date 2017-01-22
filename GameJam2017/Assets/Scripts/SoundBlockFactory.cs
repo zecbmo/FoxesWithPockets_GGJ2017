@@ -43,12 +43,14 @@ public class SoundBlockFactory : MonoBehaviour {
     //How long each sample should be
     private float SampleSize;
 
+    //List of new audio objects - can be spawned now in a random order
+    private List<GameObject> SoundBlocks = new List<GameObject>();
 
     
     //Reference to the playback machine that should be in the scene
     [SerializeField]
     private float spawnRange;
-    private float xModifier;
+    //private float xModifier;
     private Vector3 spawnPosition;
 
     // Use this for initialization
@@ -70,17 +72,11 @@ public class SoundBlockFactory : MonoBehaviour {
         SampleSize = AudioLength / (float)DivideAmount;
 
         //x modifier is the range we want them to spawn in (
-        xModifier = spawnRange / myDivideAmount;
+       // xModifier = spawnRange / myDivideAmount;
 
         //set initial spawn position to be the far left point
-        spawnPosition = gameObject.transform.position - new Vector3((gameObject.transform.position.x - spawnRange / 2), 0);
+        spawnPosition = GameObject.Find("SoundSpawnPoint").transform.position;
 
-        
-    }
-
-
-    public void SpawnBlocks()
-    {
 
         float AudioStartPoint = 0;
         float AudioEndPoint = SampleSize;
@@ -94,8 +90,9 @@ public class SoundBlockFactory : MonoBehaviour {
 
             //Create the AudioBlock Here and initialise it based on these Settings
             GameObject NewSoundBlock = Instantiate(SoundBlockPrefab, spawnPosition, Quaternion.identity);
-            //after we spawn a block, make the next spawn position increase by the x modifier
-            spawnPosition = gameObject.transform.position + new Vector3(xModifier,0);
+            NewSoundBlock.SetActive(false);
+
+       
             SoundBlock NewSoundScript = NewSoundBlock.GetComponent<SoundBlock>();
             NewSoundScript.SetUpAudio(SourceAudioFile, AudioStartPoint, AudioEndPoint, i - 1); //-1 to make it 0 - fixes problems later on for ID
 
@@ -104,10 +101,72 @@ public class SoundBlockFactory : MonoBehaviour {
             //Update Sample points for next object
             AudioStartPoint += SampleSize;
             AudioEndPoint += SampleSize;
+
+            SoundBlocks.Add(NewSoundBlock);
         }
 
         //Set up the playback machine
         PlaybackMachine PlaybackMachineScript = PlaybackMachineObject.GetComponent<PlaybackMachine>();
         PlaybackMachineScript.SetUpPlaybackMachine(DivideAmount, SampleSize);
+
     }
+
+    public void SpawnNextBlock()
+    {
+
+        int RandomBlock = Random.Range(0, SoundBlocks.Count);
+
+        GameObject Block = SoundBlocks[RandomBlock];
+        SoundBlocks.Remove(Block);
+
+        Block.SetActive(true);
+        //after we spawn a block, make the next spawn position increase by the x modifier
+        Block.transform.position = spawnPosition;
+        float xForce = Random.Range(-20.0f, 20.0f);
+        Block.GetComponent<Rigidbody>().AddForce(xForce, 100, 50f);
+        Block.GetComponent<AudioSource>().Play();
+
+    }
+
+    public bool SoundBlocksStillToSpawn()
+    {
+        if (SoundBlocks.Count == 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    //public void SpawnBlocks()
+    //{
+
+    //    float AudioStartPoint = 0;
+    //    float AudioEndPoint = SampleSize;
+
+    //    for (int i = 1; i <= DivideAmount; i++)
+    //    {
+    //        if (i == DivideAmount)
+    //        {
+    //            AudioEndPoint = AudioLength;
+    //        }
+
+    //        //Create the AudioBlock Here and initialise it based on these Settings
+    //        GameObject NewSoundBlock = Instantiate(SoundBlockPrefab, spawnPosition, Quaternion.identity);
+    //        //after we spawn a block, make the next spawn position increase by the x modifier
+    //        spawnPosition = gameObject.transform.position + new Vector3(xModifier,0);
+    //        SoundBlock NewSoundScript = NewSoundBlock.GetComponent<SoundBlock>();
+    //        NewSoundScript.SetUpAudio(SourceAudioFile, AudioStartPoint, AudioEndPoint, i - 1); //-1 to make it 0 - fixes problems later on for ID
+
+    //        //Wait here?
+
+    //        //Update Sample points for next object
+    //        AudioStartPoint += SampleSize;
+    //        AudioEndPoint += SampleSize;
+    //    }
+
+    //    //Set up the playback machine
+    //    PlaybackMachine PlaybackMachineScript = PlaybackMachineObject.GetComponent<PlaybackMachine>();
+    //    PlaybackMachineScript.SetUpPlaybackMachine(DivideAmount, SampleSize);
+    //}
 }

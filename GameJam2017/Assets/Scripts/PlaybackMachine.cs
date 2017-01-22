@@ -124,10 +124,12 @@ public class PlaybackMachine : MonoBehaviour {
     public void PlaySoundBlocks()
     {
 
-        theMixer.FindSnapshot("ListenToPlayback").TransitionTo(0.3f);
+        if (BlockSpaces.Count != 0)
+        { 
+            theMixer.FindSnapshot("ListenToPlayback").TransitionTo(0.3f);
 
         IsBlocksPlaying = true;
-     
+
         //Start the first block playing
         float Delay = 0;
 
@@ -139,6 +141,7 @@ public class PlaybackMachine : MonoBehaviour {
         }
 
         Invoke("SetPlayingAsFalseAndCheckWin", TotalClipLenght);
+        }
         
     }
 
