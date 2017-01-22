@@ -8,4 +8,15 @@ public class AnswerBlock : MonoBehaviour {
     public bool CorrectAnswer = false;
 
     public string Text;
+
+    void Start()
+    {
+        AnswerBin.OnGameWin += DestroyMe;
+    }
+
+    void DestroyMe()
+    {
+        AnswerBin.OnGameWin -= DestroyMe;
+        Destroy(gameObject);
+    }
 }

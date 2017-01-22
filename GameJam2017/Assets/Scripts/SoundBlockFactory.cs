@@ -54,7 +54,7 @@ public class SoundBlockFactory : MonoBehaviour {
     private Vector3 spawnPosition;
 
     // Use this for initialization
-    void Start ()
+    void OnEnable ()
     {
         //if spawn range is 0, set a default
         if (spawnRange == 0) spawnRange = 1.0f;

@@ -34,15 +34,20 @@ public class AnswerBin : MonoBehaviour {
             {
                 Debug.Log("Game Won");
                 WinConfetti.SetActive(true);
-                OnGameWin();
+                Invoke("YouWin", 2.0f);
             }
             else
             {
                 Debug.Log("Game Lost");
                 LoseConfetti.SetActive(true);
-                OnGameLose();
+                //OnGameLose();
             }
         }
+    }
+
+    void YouWin()
+    {
+        OnGameWin();
     }
 
 }

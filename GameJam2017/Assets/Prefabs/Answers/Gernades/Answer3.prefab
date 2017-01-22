@@ -181,7 +181,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1023984274738238}
-  m_Text: 'Alien : 2'
+  m_Text: 'Alien : 1'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb2e423845b9733418104088c2590b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CorrectAnswer: 0
+  CorrectAnswer: 1
   Text: 
 --- !u!114 &114287353120583932
 MonoBehaviour:

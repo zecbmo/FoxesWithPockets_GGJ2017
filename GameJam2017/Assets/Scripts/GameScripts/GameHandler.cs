@@ -6,12 +6,15 @@ public class GameHandler : MonoBehaviour {
 
     [SerializeField]
     private StoryHandler[] stories;
-    private int currentStory;
+    private int currentStory = 0;
+
+    public GameObject ConfettiDone;
 
 	// Use this for initialization
 	void Start () {
         AnswerBin.OnGameWin += NewStory;
         NewStory();
+        ConfettiDone.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -21,8 +24,15 @@ public class GameHandler : MonoBehaviour {
 
     private void NewStory()
     {
-     
-        currentStory = (int)Random.Range(0, stories.Length);
+
+        if (currentStory >= stories.Length)
+        {
+            Debug.Log("GameOver");
+            ConfettiDone.SetActive(true);
+
+            return;
+        }
+       
 
         Debug.Log("START NEW STORY" + currentStory);
 
@@ -33,11 +43,14 @@ public class GameHandler : MonoBehaviour {
 
                 stories[i].gameObject.SetActive(true);
                 stories[i].ResetStory();
+                
             }
             else
             {
                 stories[i].gameObject.SetActive(false);
             }
         }
+
+        currentStory++;
     }
 }
