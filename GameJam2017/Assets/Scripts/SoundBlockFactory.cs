@@ -54,6 +54,9 @@ public class SoundBlockFactory : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        //if spawn range is 0, set a default
+        if (spawnRange == 0) spawnRange = 1.0f;
+
         PlaybackMachineObject = FindObjectOfType<PlaybackMachine>().gameObject;
 	}
 
