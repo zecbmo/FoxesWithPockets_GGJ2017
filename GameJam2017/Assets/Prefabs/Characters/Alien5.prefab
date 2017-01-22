@@ -163,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1084944486447234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.35368356, y: 0.589, z: -3.121}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children:
   - {fileID: 4885799090202600}
@@ -267,7 +267,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4f10a2a37b423c642a94f5dd5a43c3fa, type: 2}
+  - {fileID: 2100000, guid: 9d307ef3345a92e449371fb841d95229, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -298,7 +298,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4f10a2a37b423c642a94f5dd5a43c3fa, type: 2}
+  - {fileID: 2100000, guid: 9d307ef3345a92e449371fb841d95229, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -329,7 +329,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4f10a2a37b423c642a94f5dd5a43c3fa, type: 2}
+  - {fileID: 2100000, guid: 9d307ef3345a92e449371fb841d95229, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -360,7 +360,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4f10a2a37b423c642a94f5dd5a43c3fa, type: 2}
+  - {fileID: 2100000, guid: 9d307ef3345a92e449371fb841d95229, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -517,6 +517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoundBlockPrefab: {fileID: 1283690024671058, guid: 369b321792e85de4089fc6b5c0075948,
     type: 2}
+  spawnRange: 0
 --- !u!114 &114732699861779602
 MonoBehaviour:
   m_ObjectHideFlags: 1
