@@ -1,0 +1,181 @@
+fileFormatVersion: 2
+guid: fa3ca06ba5000d945b37b6eaf24f88a7
+timeCreated: 1486586565
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Abdomen_Low
+    100002: ArmLeft_Low
+    100004: ArmLeft_Low1
+    100006: ArmRight_Low
+    100008: ArmRight_Low1
+    100010: ClawLeft_Low
+    100012: ClawRight_Low
+    100014: EyeLeft_Low
+    100016: EyeLidLeft_Low
+    100018: EyeLidRight_Low
+    100020: EyeRight_Low
+    100022: Head_Low
+    100024: Thorax_Low
+    100026: ToothBottomLeft_Low
+    100028: ToothBottomRight_Low
+    100030: ToothBottomRight_Low1
+    100032: ToothTopLeft_Low
+    100034: ToothTopRight_Low
+    100036: transform1
+    100038: transform10
+    100040: transform11
+    100042: transform12
+    100044: transform13
+    100046: transform14
+    100048: transform15
+    100050: transform16
+    100052: transform17
+    100054: transform2
+    100056: transform3
+    100058: transform4
+    100060: transform5
+    100062: transform6
+    100064: transform7
+    100066: transform8
+    100068: transform9
+    100070: //RootNode
+    100072: WingBottomLeft_Low
+    100074: WingBottomRight_Low
+    100076: WingTopLeft_Low
+    100078: WingTopLeft_Low1
+    100080: WingTopRight_Low
+    100082: WingTopRight_Low1
+    400000: Abdomen_Low
+    400002: ArmLeft_Low
+    400004: ArmLeft_Low1
+    400006: ArmRight_Low
+    400008: ArmRight_Low1
+    400010: ClawLeft_Low
+    400012: ClawRight_Low
+    400014: EyeLeft_Low
+    400016: EyeLidLeft_Low
+    400018: EyeLidRight_Low
+    400020: EyeRight_Low
+    400022: Head_Low
+    400024: Thorax_Low
+    400026: ToothBottomLeft_Low
+    400028: ToothBottomRight_Low
+    400030: ToothBottomRight_Low1
+    400032: ToothTopLeft_Low
+    400034: ToothTopRight_Low
+    400036: transform1
+    400038: transform10
+    400040: transform11
+    400042: transform12
+    400044: transform13
+    400046: transform14
+    400048: transform15
+    400050: transform16
+    400052: transform17
+    400054: transform2
+    400056: transform3
+    400058: transform4
+    400060: transform5
+    400062: transform6
+    400064: transform7
+    400066: transform8
+    400068: transform9
+    400070: //RootNode
+    400072: WingBottomLeft_Low
+    400074: WingBottomRight_Low
+    400076: WingTopLeft_Low
+    400078: WingTopLeft_Low1
+    400080: WingTopRight_Low
+    400082: WingTopRight_Low1
+    2300000: Abdomen_Low
+    2300002: ArmLeft_Low1
+    2300004: ArmRight_Low1
+    2300006: Thorax_Low
+    2300008: ToothBottomRight_Low1
+    2300010: WingTopLeft_Low1
+    2300012: WingTopRight_Low1
+    3300000: Abdomen_Low
+    3300002: ArmLeft_Low1
+    3300004: ArmRight_Low1
+    3300006: Thorax_Low
+    3300008: ToothBottomRight_Low1
+    3300010: WingTopLeft_Low1
+    3300012: WingTopRight_Low1
+    4300000: Thorax_Low
+    4300002: Abdomen_Low
+    4300004: ToothBottomRight_Low1
+    4300006: ArmRight_Low1
+    4300008: ArmLeft_Low1
+    4300010: WingTopRight_Low1
+    4300012: WingTopLeft_Low1
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
