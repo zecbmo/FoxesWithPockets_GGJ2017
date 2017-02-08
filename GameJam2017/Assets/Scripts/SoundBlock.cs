@@ -73,7 +73,6 @@ public class SoundBlock : MonoBehaviour {
         if(other.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
             onSoundBlockNearHead(Audio);
-            Debug.Log("DO SOMETHING ON NEAR HEAD");
         }       
     }
 
@@ -81,8 +80,7 @@ public class SoundBlock : MonoBehaviour {
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
-            onSoundBlockPutDown(Audio);
-            Debug.Log("DO SOMETHING ON PUT DOWN");
+            onSoundBlockPutDown(Audio);        
         }
     }
 
