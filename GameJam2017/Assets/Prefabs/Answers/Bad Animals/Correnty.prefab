@@ -213,7 +213,7 @@ MonoBehaviour:
   throwMultiplier: 1
   onGrabCollisionDelay: 0
   destroyImmediatelyOnThrow: 1
-  breakForce: 1500
+  breakForce: 6000
 --- !u!114 &114206482999758364
 MonoBehaviour:
   m_ObjectHideFlags: 1
